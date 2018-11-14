@@ -18,6 +18,12 @@ enable :sessions
   get '/play' do
     @player_1_name = session[:player_1_name]
     @player_2_name = session[:player_2_name]
+    @last_action = session[:last_action]
     erb :play
+  end
+
+  post '/play' do
+    session[:last_action] = params[:last_action]
+    redirect '/play'
   end
 end

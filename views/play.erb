@@ -1,3 +1,11 @@
 <h1><%= @player_1_name %> vs. <%= @player_2_name %></h1>
 
 <p><%= @player_2_name %> HP: 10</p>
+
+<% if @last_action %>
+  <%= @player_1_name + " attacked " + @player_2_name %>
+<% end %>
+
+<form action="/play" method="post">
+  <input type="submit" name="last_action" value="Attack">
+</form>
