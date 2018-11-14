@@ -10,4 +10,5 @@ feature 'Names' do
     click_button 'Submit'
     expect(page).to have_content 'Skeletor vs. Mr Cuddles'
   end
+
 end
