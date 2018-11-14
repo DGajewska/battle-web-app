@@ -8,4 +8,8 @@ feature 'Names' do
     expect(page).to have_content 'Skeletor vs. Mr Cuddles'
   end
 
+  # As Player 1,
+  # So I can start to win a game of Battle,
+  # I want my attack to reduce Player 2's HP
+
 end
