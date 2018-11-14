@@ -12,8 +12,8 @@ describe Game do
 
   describe '#attack' do
     it 'when player 1 attacks player 2 they take damage' do
-      expect(subject.player_2).to receive(:take_damage)
-      subject.attack(player_1)
+      expect(player_instance).to receive(:take_damage)
+      subject.attack(player_instance)
     end
   end
 

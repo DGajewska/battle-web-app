@@ -1,9 +1,9 @@
-<h1><%= @player_1_name %> vs. <%= @player_2_name %></h1>
+<h1><%= $battle.player_1.name %> vs. <%= $battle.player_2.name %></h1>
 
-<p><%= "#{@player_2_name} HP: #{$player_2.hp}" %></p>
+<p><%= "#{$battle.player_2.name} HP: #{$battle.player_2.hp}" %></p>
 
 <% if @last_action %>
-  <%= @player_1_name + " attacked " + @player_2_name %>
+  <%= $battle.player_1.name + " attacked " + $battle.player_2.name %>
 <% end %>
 
 <form action="/play" method="post">

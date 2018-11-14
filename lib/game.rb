@@ -8,4 +8,8 @@ class Game
     @player_2 = player_class.new(p2)
   end
 
+  def attack(player)
+    player.take_damage
+  end
+
 end
