@@ -25,6 +25,9 @@ enable :sessions
 
   post '/play' do
     session[:last_action] = params[:last_action]
+    if session[:last_action] == "Attack"
+      $player_1.attack($player_2)
+    end
     redirect '/play'
   end
 end
