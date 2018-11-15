@@ -5,15 +5,20 @@ class Battle < Sinatra::Base
   run! if app_file == $0
 
 enable :sessions
+before do
+  @game = Game.instance
+end
 
   get '/' do
     erb(:index)
   end
 
   post '/names' do
-    $battle = Game.new(params[:player_1_name],params[:player_2_name])
+    Game.create(params[:player_1_name],params[:player_2_name])
     redirect '/play'
   end
+
+
 
   get '/play' do
     @last_action = session[:last_action]
@@ -23,7 +28,7 @@ enable :sessions
   post '/play' do
     session[:last_action] = params[:last_action]
     if session[:last_action] == "Attack"
-      $battle.attack($battle.players[1])
+      @game.attack(@game.players[(@game.turn_index + 1) % 2])
     end
     redirect '/play'
   end

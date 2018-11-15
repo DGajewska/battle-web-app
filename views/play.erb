@@ -1,12 +1,17 @@
-<h1><%= $battle.players[0].name %> vs. <%= $battle.players[1].name %></h1>
+<h1><%= @game.players[0].name %> vs. <%= @game.players[1].name %></h1>
 
-<p><%= "#{$battle.players[0].name} HP: #{$battle.players[0].hp}" %></p>
-<p><%= "#{$battle.players[1].name} HP: #{$battle.players[1].hp}" %></p>
+<% if @game.battle_continues? %>
+  <p><%= "#{@game.players[0].name} HP: #{@game.players[0].hp}" %></p>
+  <p><%= "#{@game.players[1].name} HP: #{@game.players[1].hp}" %></p>
 
-<% if @last_action %>
-  <%= $battle.players[1].name + " attacked " + $battle.players[0].name %>
+  <% if @last_action %>
+    <%= @game.players[(@game.turn_index + 1 )% 2].name + " attacked " + @game.players[@game.turn_index].name %>
+  <% end %>
+
+  <form action="/play" method="post">
+    <input type="submit" name="last_action" value="Attack">
+  </form>
+
+<% else %>
+  <%= "#{@game.players[@game.turn_index].name} loses" %>
 <% end %>
-
-<form action="/play" method="post">
-  <input type="submit" name="last_action" value="Attack">
-</form>
