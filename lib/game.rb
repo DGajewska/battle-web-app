@@ -1,15 +1,24 @@
-require 'player'
+require_relative './player'
 
 class Game
-  attr_accessor :player_1, :player_2
+  attr_accessor :players
 
   def initialize(p1, p2, player_class = Player)
-    @player_1 = player_class.new(p1)
-    @player_2 = player_class.new(p2)
+    @players = []
+    @players << player_class.new(p1)
+    @players << player_class.new(p2)
   end
 
   def attack(player)
     player.take_damage
+  end
+
+  def whose_turn
+    @players[0]
+  end
+
+  def switch_turns
+    @players.rotate!
   end
 
 end

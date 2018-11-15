@@ -10,6 +10,7 @@ class Player
 
   def take_damage
     @hp -= 10
+    $battle.switch_turns
   end
 
 end

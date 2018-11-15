@@ -23,7 +23,7 @@ enable :sessions
   post '/play' do
     session[:last_action] = params[:last_action]
     if session[:last_action] == "Attack"
-      $battle.attack($battle.player_2)
+      $battle.attack($battle.players[1])
     end
     redirect '/play'
   end
